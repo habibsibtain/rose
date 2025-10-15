@@ -94,7 +94,7 @@ export const create_comment = async (req, res) => {
 }
 
 
-export const toggleLike = async (req, res) => {
+export const toggle_like = async (req, res) => {
   const { id: videoId } = req.params;
   // In a real app, userId would come from authenticated session (e.g., req.user.id)
   const { userId, likeType } = req.body; // likeType should be 'like' or 'dislike'
