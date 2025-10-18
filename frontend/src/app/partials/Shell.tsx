@@ -6,6 +6,7 @@ import Link from "next/link";
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isDashboard = pathname?.startsWith("/dashboard");
+  const isAuthed = pathname?.startsWith("/home") || pathname?.startsWith("/dashboard") || pathname?.startsWith("/upload") || pathname?.startsWith("/groups");
 
   if (isDashboard) {
     return (
@@ -23,6 +24,12 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <SidebarLink href="/trending" label="Trending" />
           <SidebarLink href="/music" label="Music" />
           <SidebarLink href="/gaming" label="Gaming" />
+          {isAuthed && (
+            <>
+              <div className="h-px bg-white/10 my-2" />
+              <SidebarLink href="/groups" label="My Groups" />
+            </>
+          )}
         </div>
       </aside>
       <main className="min-w-0 max-w-7xl w-full">{children}</main>
